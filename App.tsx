@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Button, Alert, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Header from './component/Header';
 import Selector from './component/Selector';
 

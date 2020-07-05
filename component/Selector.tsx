@@ -3,11 +3,13 @@ import Axios from '../axios';
 import { View, Button, Alert, Text, StyleSheet } from 'react-native';
 
 import RNPickerSelect from 'react-native-picker-select';
-import { AreaOptions } from '../AreaOptions';
+import { AreaOptions,checkName } from '../AreaOptions';
+import Forecasts from './Forecasts';
 
 const Selector = () => {
   const [area, setArea] = useState('');
-  const [description, setDescription] = useState('');
+  const [data, setData] = useState();
+  const [areaName,setAreaName]=useState<string|undefined>('')
 
   const searchWeather = () => {
     if (area === '') {
@@ -15,13 +17,15 @@ const Selector = () => {
     }
     Axios.get('v1', { params: { city: area } })
       .then((res) => {
-        console.log(res.data);
-        setDescription(`${res.data['description']['text']}`);
+        setAreaName(checkName(area))
+        setData(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+
   return (
     <View style={styles.container}>
       <RNPickerSelect
@@ -32,7 +36,7 @@ const Selector = () => {
         Icon={() => <Text style={styles.icon}>▼</Text>}
       />
       <Button title='Search' onPress={searchWeather} />
-      <Text>{description}</Text>
+      {data&&<Forecasts area={areaName} data={data}/>}
     </View>
   );
 };
@@ -47,7 +51,7 @@ const styles=StyleSheet.create({
   },
   icon: {
     position: 'absolute',
-    right: 60,
+    right: 20,
     top: 10,
     fontSize: 18,
     color: '#789',

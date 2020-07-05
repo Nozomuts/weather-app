@@ -2,12 +2,14 @@ import React, { FC } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 type Props = {
-  title: string;
+  title: string|undefined;
+  setDetail?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Header:FC<Props> = ({title}) => {
+const Header:FC<Props> = ({title,setDetail}) => {
   return (
       <View style={styles.header}>
+        {setDetail&&<Text style={styles.back} onPress={()=>setDetail(false)}>←</Text>}
         <Text style={styles.headerTitle}>{title}</Text>
       </View>
   );
@@ -25,6 +27,14 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: 'white',
     fontSize: 20,
+    fontWeight: 'bold'
+  },
+  back: {
+    color: 'white',
+    fontSize: 30,
+    position: "absolute",
+    left: 20,
+    top: 30
   }
 });
 
