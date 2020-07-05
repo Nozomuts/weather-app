@@ -1,0 +1,21 @@
+export const AreaOptions= [
+  { label: '旭川', value: '012010' },
+  { label: '釧路', value: '014020' },
+  { label: '札幌', value: '016010' },
+  { label: '青森', value: '020010' },
+  { label: '仙台', value: '040010' },
+  { label: '秋田', value: '050010' },
+  { label: '宇都宮', value: '090010' },
+  { label: '東京', value: '130010' },
+  { label: '長野', value: '200010' },
+  { label: '名古屋', value: '230010' },
+  { label: '大阪', value: '270000' },
+  { label: '松江', value: '320010' },
+  { label: '広島', value: '340010' },
+  { label: '高松', value: '370000' },
+  { label: '高知', value: '390010' },
+  { label: '福岡', value: '400010' },
+  { label: '鹿児島', value: '460010' },
+  { label: '那覇', value: '471010' },
+  { label: '石垣島', value: '474010' }
+]
